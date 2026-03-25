@@ -32,12 +32,18 @@
             {% if user.is_authenticated %}
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{% url 'blog:blog_create' %}">Post qo'shish</a></li>
-            <li><a class="dropdown-item" href="#">Chiqish</a></li>
-          </ul>
+            <li>
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="dropdown-item">Chiqish</button>
+          </form>
+
+          </li>
+            </ul>
             {% else %}
 
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Login</a></li>
+            <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
             <li><a class="dropdown-item" href="#">Signup</a></li>
           </ul>
             {% endif %}
