@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post-entry">
+            <h2>
+                <a href="{% url 'blog:blog_detail' post.pk %}">
+                    {{ post.title }}
+                </a>
+            </h2>
+            <p>
+                {{ post.content|slice:":100" }}
+            </p>
+        </div>
+    {% endfor %}
+{% endblock content %}
