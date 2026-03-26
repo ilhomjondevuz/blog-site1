@@ -44,7 +44,7 @@
 
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
-            <li><a class="dropdown-item" href="#">Signup</a></li>
+            <li><a class="dropdown-item" href="{% url 'signup' %}">Signup</a></li>
           </ul>
             {% endif %}
         </li>
@@ -52,6 +52,11 @@
     </div>
   </div>
 </nav>
+    {% if user.is_authenticated %}
+    <h4>Hush kelibsiz, {{ user.username }}</h4>
+    {% else %}
+    <h4>Siz saytga kirmagansiz, kirish uchun Accountni bos</h4>
+    {% endif %}
     {% block content %}
     {% endblock content %}
     {% block script %}
